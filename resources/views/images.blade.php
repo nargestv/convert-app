@@ -74,24 +74,26 @@
                     <div class="mb-3 content-tables" style="position:relative">
                         <div class ="table-img" id="table-img-{{$key}}"
                             style="font-size:13px;direction:rtl;font-family:Vazir; position:relative;z-index:2;
-                                background:repeating-linear-gradient(45deg, #8D8F92 0, #8D8F92 5%, #D0D0D1 0, #D0D0D1 50%) 0 / 10px 10px;                                 
+                                background:repeating-linear-gradient(45deg, #97989B 0, #97989B 5%, #ECECED 0, #ECECED 50%) 0 / 10px 10px;                                 
                                 border-radius: 0px 0px 16px 16px;
                                 padding :20px"
                         >
-                        <div style="background-color:#D0D0D1;width:100%;color:#FFF;height:30px;align-items: center;padding:5px;border-radius: 4px 4px 0px 0px;">{{ $description[$key] }}</div>
-                            <table  cellspacing="0"  class="table card" style="
+                        <div style="justify-content: center;display:flex;background-color:#D0D0D1;width:100%;color: rgba(2, 17, 59, 0.76);height:30px;align-items: center;border-radius: 4px 4px 0px 0px;">{{ $description[$key] }}</div>
+                            <table cellspacing="0"  class="table card" style="
                                     background: rgba(2, 17, 59, 0.76);
                                     border-radius: 0px 0px 16px 16px;
                                     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                                     border-spacing:0 5px;
-                                    
+                                    table-layout: fixed;
+                                    word-wrap: break-word;
                                     border: 1px solid rgba(2, 17, 59, 0.3);
                                     border-collapse: collapse;">
                                 <tbody>
                                     @foreach ($file_detail as $key2=> $files)
-                                    <tr style="border-color: inherit;border-style: solid;border-width: 1px;border-color:#FFF">
-                                    @foreach ($files as $file)
+                                    <tr style="border-color: inherit;border-style: solid;border-width: 1px;border-color:#163F90">
+                                    @foreach ($files as $key_row=>$file)
                                         <td style="color:#FFF;
+                                                    width:10%;
                                                     padding: 0.5rem 0.5rem;
                                                     background-color: var(--bs-table-bg);
                                                     border-bottom-width: 0px;
@@ -115,7 +117,7 @@
        <div class="container canvas-content" style="max-width: 600px">
             <div class="col-md-12 mb-3 text-center" id ="stack">
                 @foreach ($files as $key=>$file_detail)
-                    <canvas id="canvas-{{$key}}" style="                                background:repeating-linear-gradient(45deg, #8D8F92 0, #8D8F92 5%, #D0D0D1 0, #D0D0D1 50%) 0 / 10px 10px;"></canvas>
+                    <canvas id="canvas-{{$key}}" style="                                background:repeating-linear-gradient(45deg, #8D8F92 0, #8D8F92 5%, #F6F6F6 0, #F6F6F6 50%) 0 / 10px 10px;"></canvas>
                 @endforeach
             </div>   
        </div>
