@@ -83,7 +83,7 @@ echo $res->getBody();
         $files = [];
         $files_import = Excel::toArray(new PricesImport, $request->file('file'));
         foreach($files_import as $key=> $import_file) {
-            $description[$key] = $import_file[0][0];
+            $description[$key] = to_persian_numbers($import_file[0][0]);
             $header[] = $import_file[1];
             if(count($import_file) > 3 ){
                 $file_details[] = array_slice($import_file, 3);  

@@ -5,9 +5,11 @@ var filter = document.getElementById('filterName');
     }, false);
 
     function generatePNG() {
+    setTimeout(function() {
         function loaded(){
         this.loaded = true;
     }
+}, 1000);
     var nWidth;
     var nHeight;
       //your code to be executed after 5 second
@@ -29,7 +31,9 @@ var filter = document.getElementById('filterName');
             // var cw = nWidth[index];
             // var ch = nHeight[index];
             nWidth = document.getElementById('table-img-'+ index).getBoundingClientRect().width;
-            nHeight = document.getElementById('table-img-'+ index).getBoundingClientRect().height * 1.25;
+          //  nHeight = document.getElementById('table-img-'+ index).getBoundingClientRect().height * 1.25;
+            nHeight = document.getElementById('table-img-'+ index).getBoundingClientRect().height*1.1;
+
             canvas.width = nWidth;
             canvas.height = nHeight;
             var ctx = canvas.getContext('2d');
@@ -48,6 +52,8 @@ var filter = document.getElementById('filterName');
             // Load an image of intrinsic size 300x227 in CSS pixels
             rasterizeHTML.drawDocument(d2, canvas).then(function(renderResult) {
                 ctx.direction = 'rtl';
+                ctx.beginPath();
+
                 var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
                 ctx.fillStyle = "transparent"
                 // var data=imgData.data;
@@ -64,8 +70,8 @@ var filter = document.getElementById('filterName');
              //   ctx.fillStyle = '#040D26';
                 //ctx.fillRect(30, 30, nWidth - 40, nHeight - 80);
             //   ctx.fillRect(0, 30, nWidth, nHeight + 80);
-               var dataUrl = canvas.toDataURL('image/jpeg', 1);
-               myDiv1.innerHTML += '<a  download="triangle.jpeg" href="'+dataUrl+'" title="ImageName"><button style ="margin:10px 0px;" class="btn btn-info" type="button" id="download-'+ index+'">دانلود</button><img src="'+dataUrl+'"/> </a></br>';
+               var dataUrl = canvas.toDataURL('image/png', 1);
+               myDiv1.innerHTML += '<a download="hoonamic.png" href="'+dataUrl+'" title="ImageName"><button style ="margin:10px 0px;" class="btn btn-info" type="button" id="download-'+ index+'">دانلود</button><img src="'+dataUrl+'"/> </a></br>';
                if(images[10].loaded){  
                }
                ctx.drawImage(renderResult.image, 0, 0); 
