@@ -20,11 +20,15 @@ This set of fonts are used in this project under the license: (.....)
 /*  Ronakweb.com  */
 
 @font-face {
-	font-family: 'yekan';
-	src: url(/fonts/Yekan.eot);
-	src: url(/fonts/Yekan.eot?#iefix) format("embedded-opentype"), url(/fonts/Yekan.woff) format("woff"), url(/fonts/Yekan.ttf) format("truetype"), url(/fonts/Yekan.svg#BYekan) format("svg");
+	font-family: yekan;
+	src: url( '/fonts/Yekan.eot' );
+	src: url( '/fonts/Yekan.eot?#iefix' ) format( 'embedded-opentype' ),
+		url( '/fonts/Yekan.woff2' ) format( 'woff2' ),
+		url( '/fonts/Yekan.woff' ) format( 'woff' ),
+		url( '/fonts/Yekan.ttf' ) format( 'truetype' ),
+		url( '/fonts/Yekan.svg#Yekan' ) format( 'svg' );
 	font-weight: normal;
-	font-style: normal
+	font-style: normal;
 }
 @font-face {
 	font-family: Vazir;

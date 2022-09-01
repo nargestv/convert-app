@@ -81,9 +81,21 @@ echo $res->getBody();
             'file' => 'required|mimes:xlsx, csv, xls|max:4096',
         ]);
         $files = [];
+        $desc = '';
         $files_import = Excel::toArray(new PricesImport, $request->file('file'));
+        $pattern = '/(\d{4})\/(\d{2})\/(\d{2})/';
         foreach($files_import as $key=> $import_file) {
-            $description[$key] = to_persian_numbers($import_file[0][0]);
+           // $desc = to_persian_numbers(trim(preg_replace('/\s\s+/', ' ', $import_file[0][0])));
+            $desc = (trim(preg_replace('/\s\s+/', ' ', $import_file[0][0])));
+            if(preg_match($pattern, $desc )){
+                $parts = preg_split('/به روز رسانی/', $desc);
+                $matches = preg_match($pattern, $parts[0], $date);
+                $titles = preg_split($pattern, $desc);
+            }
+
+            $description[$key] = $desc;
+            $dates[$key] = $date[0];
+            $all_titles[$key] = $titles[0];
             $header[] = $import_file[1];
             if(count($import_file) > 3 ){
                 $file_details[] = array_slice($import_file, 3);  
@@ -91,6 +103,7 @@ echo $res->getBody();
             unset($import_file[0]);
             $files[] = $import_file;
         }
-        return view('images', compact('files','file_details', 'header', 'description'));
+      
+        return view('images', compact('files','file_details', 'header', 'description','dates','all_titles'));
     }
 }

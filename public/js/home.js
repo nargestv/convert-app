@@ -33,7 +33,6 @@ var filter = document.getElementById('filterName');
             nWidth = document.getElementById('table-img-'+ index).getBoundingClientRect().width;
           //  nHeight = document.getElementById('table-img-'+ index).getBoundingClientRect().height * 1.25;
             nHeight = document.getElementById('table-img-'+ index).getBoundingClientRect().height*1.1;
-
             canvas.width = nWidth;
             canvas.height = nHeight;
             var ctx = canvas.getContext('2d');
@@ -53,6 +52,7 @@ var filter = document.getElementById('filterName');
             rasterizeHTML.drawDocument(d2, canvas).then(function(renderResult) {
                 ctx.direction = 'rtl';
                 ctx.beginPath();
+                ctx.font = '15px yekan';
 
                 var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
                 ctx.fillStyle = "transparent"

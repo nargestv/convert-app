@@ -77,7 +77,16 @@
                                 border-radius: 0px 0px 16px 16px;
                                 padding :20px"
                         >
-                        <div style="justify-content: center;display:flex;background-color:#D0D0D1;width:100%;color: rgba(2, 17, 59, 0.76);height:30px;align-items: center;border-radius: 4px 4px 0px 0px;">{{ $description[$key] }}</div>
+                        <div style="display:flex;justify-content:center;width:100%;height:30px">
+                            <div style="display:flex;justify-content: center;align-items: center;color:#FFF;width:70%;border-radius: 4px 4px 0px 0px;background: rgba(2, 17, 59, 0.76);">
+                            {{ $all_titles[$key] }}
+                            </div>
+                        </div>
+                        <div style="justify-content: center;display:flex;background-color:#D0D0D1;width:100%;color: rgba(2, 17, 59, 0.76);height:30px;align-items: center;border-radius: 4px 4px 0px 0px;">
+                            <div>
+                            {{ $dates[$key] }}
+                            </div>
+                        </div>
                             <table cellspacing="0"  class="table card" style="
                                     background: rgba(2, 17, 59, 0.76);
                                     border-radius: 0px 0px 16px 16px;
@@ -96,16 +105,22 @@
                                     @else                                   
                                     <tr style="border-color: inherit;border-style: solid;border-width: 1px;border-color:#163F90">
                                     @endif
-
+                                    @php
+                                    $color_header = '#FFF';
+                                    if($key2 == 1){
+                                        $color_header ='yellow';
+                                    }
+                                    @endphp
                                     @foreach ($files as $key_row=>$file)
+                                    
                                     @if($loop->first)
-                                    <td style="color:#FFF;
+                                    <td style="color:{{$color_header}};
                                                     width:10%;
                                                     padding: 0.5rem 0.5rem;
                                                     background-color: var(--bs-table-bg);
                                                     border: 0px;">
                                     @else 
-                                        <td style="color:#FFF;
+                                        <td style="color:{{$color_header}};
                                                     width:10%;
                                                     padding: 0.5rem 0.5rem;
                                                     background-color: var(--bs-table-bg);
@@ -121,7 +136,7 @@
                                          echo   to_persian_numbers($file);
                                         }
                                         ?>
-                                        
+                                         {{$key2}}
                                     </td>
                                    
                                     @endforeach
