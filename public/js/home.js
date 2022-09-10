@@ -41,13 +41,13 @@ var filter = document.getElementById('filterName');
             d2.body.appendChild(childIndex);
             ctx.direction = 'rtl';
             ctx.fillStyle = "#ECECED";
-            ctx.fillRect(0, 0, 800, 500);
-            ctx.font = '15px yekan';
+            ctx.fillRect(0, 0, nWidth,  nHeight+50);
 
             const image = new Image(); // Using optional size for image
             image.src = '/uploads/images/theme-background.png';
             image.onload = () => {
                 ctx.drawImage(image, 0, 0, nWidth, nHeight+50);
+
                 images.push(image); 
                 ctx.drawImage(renderResult, 0, 0); 
             };

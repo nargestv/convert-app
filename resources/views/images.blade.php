@@ -74,7 +74,7 @@
                 @foreach ($files as $key=>$file_detail)
                     <div class="mb-3 content-tables" style="position:relative;z-index:2;">
                         <div class ="table-img" id="table-img-{{$key}}"
-                            style="font-size:13px;direction:rtl;font-family:yekan;
+                            style="font-size:13px;direction:rtl;font-family:yekan !important;
                                 background-image: url('/uploads/images/theme-background.png');
                                 /* background-color: #ECECED;  */
                                 background-position: center; 

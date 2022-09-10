@@ -160,7 +160,21 @@ footer {
             justify-content: space-between;
     -webkit-box-align: center;
             align-items: center;
-}body {
-  font-family: Vazir !important;
+}body{
+	font-family: yekan !important;
+	direction:rtl;
+	font-size:13px;
 }
+.table-img{
+	font-family: yekan !important;
+	direction:rtl;
+	font-size:13px;
+	background-image: url('/uploads/images/theme-background.png');
+	background-color: #ECECED; 
+	background-position: center; 
+	background-repeat: repeat; 
+	background-size: cover; 
+	border-radius: 0px 0px 16px 16px;
+	padding :20px;
+ }
 
