@@ -92,10 +92,12 @@ echo $res->getBody();
                 $matches = preg_match($pattern, $parts[0], $date);
                 $titles = preg_split($pattern, $desc);
             }
-
             $description[$key] = $desc;
-            $dates[$key] = $date[0];
-            $all_titles[$key] = $titles[0];
+            $dates[$key] = to_persian_numbers($date[0]);
+            $all_titles[$key] = to_persian_numbers($titles[0]);
+            if(isset($parts[1])){
+                $times[$key] = to_persian_numbers($parts[1]);
+            }
             $header[] = $import_file[1];
             if(count($import_file) > 3 ){
                 $file_details[] = array_slice($import_file, 3);  
@@ -104,6 +106,6 @@ echo $res->getBody();
             $files[] = $import_file;
         }
       
-        return view('images', compact('files','file_details', 'header', 'description','dates','all_titles'));
+        return view('images', compact('files','file_details', 'header', 'description','times','dates','all_titles'));
     }
 }

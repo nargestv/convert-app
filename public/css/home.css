@@ -27,8 +27,8 @@ This set of fonts are used in this project under the license: (.....)
 		url( '/fonts/Yekan.woff' ) format( 'woff' ),
 		url( '/fonts/Yekan.ttf' ) format( 'truetype' ),
 		url( '/fonts/Yekan.svg#Yekan' ) format( 'svg' );
-	font-weight: normal;
 	font-style: normal;
+	font-weight: 500;
 }
 @font-face {
 	font-family: Vazir;

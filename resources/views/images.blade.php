@@ -42,15 +42,17 @@
         #stack {
             position:relative;
             }
+            .bg{
+                background:repeating-linear-gradient(45deg, #97989B 0, #97989B 5%, #ECECED 0, #ECECED 50%) 0 / 10px 10px;
+            }
        
     </style>
     
 
 </head>
 <body > 
-       <div class="container mt-4" style="max-width: 600px">
-            <input type="button" value="نمایش" id="filterName" class="btn btn-primary btn-lg btn-block">
-
+       <div class="container mt-4" style="max-width: 750px">
+            <input type="button" value="نمایش" id="filterName" class="btn btn-primary btn-lg btn-block" style="background:rgba(2, 17, 59, 0.76)">
             <br />
             <div id="myDiv1"></div>
             @if ($message = Session::get('success'))
@@ -67,28 +69,38 @@
                 </ul>
             </div>
             @endif
-            <div class="mb-3-dh" id="content-tables-index">
+            <div class="mb-3-dh" id="content-tables-index" style="position:relative;z-index:2;">
             @if (count($files) > 0)
                 @foreach ($files as $key=>$file_detail)
-                    <div class="mb-3 content-tables" style="position:relative;z-index:2">
+                    <div class="mb-3 content-tables" style="position:relative;z-index:2;">
                         <div class ="table-img" id="table-img-{{$key}}"
-                            style="font-size:15px;direction:rtl;font-family:yekan;z-index:2;
-                                background:repeating-linear-gradient(45deg, #97989B 0, #97989B 5%, #ECECED 0, #ECECED 50%) 0 / 10px 10px;                                 
+                            style="font-size:13px;direction:rtl;font-family:yekan;
+                                background-image: url('/uploads/images/theme-background.png');
+                                /* background-color: #ECECED;  */
+                                background-position: center; 
+                                background-repeat: repeat; 
+                                background-size: cover; 
                                 border-radius: 0px 0px 16px 16px;
                                 padding :20px"
                         >
                         <div style="display:flex;justify-content:center;width:100%;height:30px">
-                            <div style="display:flex;justify-content: center;align-items: center;color:#FFF;width:70%;border-radius: 4px 4px 0px 0px;background: rgba(2, 17, 59, 0.76);">
+                            <div style="display:flex;justify-content: center;align-items: center;color:#FFF;width:85%;border-radius: 14px 14px 0px 0px;background: rgba(2, 17, 59, 0.76);">
                             {{ $all_titles[$key] }}
                             </div>
                         </div>
-                        <div style="justify-content: center;display:flex;background-color:#D0D0D1;width:100%;color: rgba(2, 17, 59, 0.76);height:30px;align-items: center;border-radius: 4px 4px 0px 0px;">
-                            <div>
+                        <div style="justify-content: center;display:flex;background-color:#D0D0D1;width:100%;color: rgba(2, 17, 59, 0.76);height:30px;align-items: center;border-radius: 14px 14px 0px 0px;">
+                            <div  style="float:right;width:50%;direction:rtl;padding:2%">
+                                لیست قیمت فروش : 
                             {{ $dates[$key] }}
+                            </div>
+                            <div  style="float:left;width:50%;direction:ltr;padding:2%">
+                           به روزرسانی:
+                            {{ $times[$key] }}
                             </div>
                         </div>
                             <table cellspacing="0"  class="table card" style="
-                                    background: rgba(2, 17, 59, 0.76);
+                                    /* background: rgba(2, 17, 59, 0.76); */
+                                    background: none;
                                     border-radius: 0px 0px 16px 16px;
                                     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                                     border-spacing:0 5px;
@@ -103,25 +115,27 @@
                                     @if($loop->last)
                                     <tr>
                                     @else                                   
-                                    <tr style="border-color: inherit;border-style: solid;border-width: 1px;border-color:#163F90">
+                                    <tr style="
+                                    /* border-color: inherit;border-style: solid;border-width: 1px;border-color:#163F90 */
+                                    ">
                                     @endif
                                     @php
-                                    $color_header = '#FFF';
+                                    $color_header = '#000';
                                     if($key2 == 1){
-                                        $color_header ='yellow';
+                                        $color_header = 'rgba(2, 17, 59, 0.76)';
                                     }
                                     @endphp
                                     @foreach ($files as $key_row=>$file)
                                     
                                     @if($loop->first)
-                                    <td style="color:{{$color_header}};
-                                                    width:10%;
+                                    <td style="text-align: center;color:{{$color_header}};
+                                                    width:12%;
                                                     padding: 0.5rem 0.5rem;
                                                     background-color: var(--bs-table-bg);
                                                     border: 0px;">
                                     @else 
-                                        <td style="color:{{$color_header}};
-                                                    width:10%;
+                                        <td style="text-align: center;color:{{$color_header}};
+                                                    width:12%;
                                                     padding: 0.5rem 0.5rem;
                                                     background-color: var(--bs-table-bg);
                                                     border-bottom-width: 0px;
@@ -133,10 +147,10 @@
                                         @endif
                                         <?php
                                         if(!empty($file) ){
-                                         echo   to_persian_numbers($file);
+                                            echo   to_persian_numbers($file);
                                         }
                                         ?>
-                                         {{$key2}}
+                                       
                                     </td>
                                    
                                     @endforeach
@@ -150,7 +164,7 @@
   justify-content: center;
   align-items: center;" class="logo text-center" id ="logo">
                            
-                            <img src="/uploads/images/logo.svg" width="120" height="60">
+                            <img src="/uploads/images/logo.svg" width="140" height="60">
 
                         </div>
                         </div>
@@ -163,7 +177,7 @@
        <div class="container canvas-content" style="max-width: 600px">
             <div class="col-md-12 mb-3 text-center" id ="stack">
                 @foreach ($files as $key=>$file_detail)
-                    <canvas id="canvas-{{$key}}" style="display:none;background:repeating-linear-gradient(45deg, #8D8F92 0, #8D8F92 5%, #F6F6F6 0, #F6F6F6 50%) 0 / 10px 10px;"></canvas>
+                    <canvas class="canvas-body"  id="canvas-{{$key}}" style="display:none;background:repeating-linear-gradient(45deg, #8D8F92 0, #8D8F92 5%, #F6F6F6 0, #F6F6F6 50%) 0 / 10px 10px;"></canvas>
                 @endforeach
             </div>   
        </div>

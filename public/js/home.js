@@ -40,22 +40,25 @@ var filter = document.getElementById('filterName');
             var d2 = document.implementation.createHTMLDocument();
             d2.body.appendChild(childIndex);
             ctx.direction = 'rtl';
-          // const image = new Image(); // Using optional size for image
-            //image.src = '/uploads/work-5.jpg';
-            // image.onload = () => {
-            //     ctx.drawImage(image, 0, 0, nWidth, nHeight+50);
-            //     images.push(image); 
-            //     ctx.drawImage(renderResult, 0, 0); 
-            // };
+            ctx.fillStyle = "#ECECED";
+            ctx.fillRect(0, 0, 800, 500);
+            ctx.font = '15px yekan';
+
+            const image = new Image(); // Using optional size for image
+            image.src = '/uploads/images/theme-background.png';
+            image.onload = () => {
+                ctx.drawImage(image, 0, 0, nWidth, nHeight+50);
+                images.push(image); 
+                ctx.drawImage(renderResult, 0, 0); 
+            };
 
             // Load an image of intrinsic size 300x227 in CSS pixels
             rasterizeHTML.drawDocument(d2, canvas).then(function(renderResult) {
                 ctx.direction = 'rtl';
                 ctx.beginPath();
-                ctx.font = '15px yekan';
 
                 var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-                ctx.fillStyle = "transparent"
+                //ctx.fillStyle = "transparent"
                 // var data=imgData.data;
                 // for(var i=0;i<data.length;i+=4){
                 //     if(data[i+3]<255){
@@ -67,13 +70,12 @@ var filter = document.getElementById('filterName');
                 // ctx.putImageData(imgData,0,0);
             //    ctx.globalAlpha = 0.2;
             //    ctx.filter = 'blur(4px)';
-             //   ctx.fillStyle = '#040D26';
+                ctx.fillStyle = '#ECECED';
                 //ctx.fillRect(30, 30, nWidth - 40, nHeight - 80);
             //   ctx.fillRect(0, 30, nWidth, nHeight + 80);
                var dataUrl = canvas.toDataURL('image/png', 1);
                myDiv1.innerHTML += '<a download="hoonamic.png" href="'+dataUrl+'" title="ImageName"><button style ="margin:10px 0px;" class="btn btn-info" type="button" id="download-'+ index+'">دانلود</button><img src="'+dataUrl+'"/> </a></br>';
-               if(images[10].loaded){  
-               }
+               
                ctx.drawImage(renderResult.image, 0, 0); 
             });
    
